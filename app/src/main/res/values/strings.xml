@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DrinkWater</string>
+    <string name="message_loading_data">Loading data...</string>
+    <string name="message_saving_data">Savind data...</string>
+    <string name="message_finished_saving_data">Item saved</string>
+
+    <string-array name="ConsumedWaterEntries">
+        <item>1.000 ml</item>
+        <item>750 ml</item>
+        <item>500 ml</item>
+        <item>200 ml</item>
+        <item>Custom…</item>
+    </string-array>
+</resources>

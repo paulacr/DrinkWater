@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="paulacr.drinkwater.ConsumedWaterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.DrinkWaterActivity">
+
+        <Spinner
+            android:id="@+id/consumedWaterSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:entries="@array/ConsumedWaterEntries"
+            app:layout_constraintEnd_toStartOf="@+id/saveConsumedWater"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            />
+
+        <Button
+            android:id="@+id/saveConsumedWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:onClick="@{() -> viewModel.onSaveConsumedWater()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/consumedWaterSelector"
+            app:layout_constraintTop_toTopOf="@id/consumedWaterSelector" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
