@@ -4,11 +4,11 @@ import androidx.hilt.lifecycle.ViewModelInject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import paulacr.drinkwater.notification.NotificationDispatcher
-import paulacr.drinkwater.repository.ConsumedWaterDataSource
+import paulacr.drinkwater.repository.ConsumedWaterRepository
 import paulacr.drinkwater.ui.ViewState
 
 class ConsumedWaterViewModel @ViewModelInject constructor(
-    val repository: ConsumedWaterDataSource,
+    val repository: ConsumedWaterRepository,
     val notificationDispatcher: NotificationDispatcher
 ) : BaseViewModel(), CoroutineScope {
 

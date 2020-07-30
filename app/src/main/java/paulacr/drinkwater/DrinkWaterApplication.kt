@@ -14,8 +14,6 @@ class DrinkWaterApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
-    private lateinit var appComponent: ApplicationComponent
-
     override fun getWorkManagerConfiguration() =
         Configuration.Builder()
             .setWorkerFactory(workerFactory)

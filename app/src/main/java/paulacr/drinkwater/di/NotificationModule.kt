@@ -15,8 +15,8 @@ import paulacr.drinkwater.db.ConsumedWaterDAO
 import paulacr.drinkwater.db.DrinkWaterDb
 import paulacr.drinkwater.notification.NotificationDispatcher
 import paulacr.drinkwater.notification.NotificationSchedulerWorker
-import paulacr.drinkwater.repository.ConsumedWaterDataSource
 import paulacr.drinkwater.repository.ConsumedWaterRepository
+import paulacr.drinkwater.repository.ConsumedWaterRepositoryImpl
 
 @Module
 @InstallIn(value = [ActivityComponent::class, ApplicationComponent::class])
@@ -24,16 +24,13 @@ abstract class NotificationModule {
 
     @Binds
     abstract fun bindConsumedWaterRepository(
-        consumedWaterRepository: ConsumedWaterRepository
-    ): ConsumedWaterDataSource
-
-    @Binds
-    abstract fun provideConsumedWaterDao(dao: ConsumedWaterDAO): ConsumedWaterDAO
+        consumedWaterRepositoryImpl: ConsumedWaterRepositoryImpl
+    ): ConsumedWaterRepository
 
     @Provides
     @Singleton
-    fun provideConsumedWaterRepository(dao: ConsumedWaterDAO): ConsumedWaterRepository {
-        return ConsumedWaterRepository(dao)
+    fun provideConsumedWaterRepository(dao: ConsumedWaterDAO): ConsumedWaterRepositoryImpl {
+        return ConsumedWaterRepositoryImpl(dao)
     }
 
     @Provides
