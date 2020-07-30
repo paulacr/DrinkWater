@@ -31,6 +31,7 @@ abstract class NotificationModule {
     abstract fun provideConsumedWaterDao(dao: ConsumedWaterDAO): ConsumedWaterDAO
 
     @Provides
+    @Singleton
     fun provideConsumedWaterRepository(dao: ConsumedWaterDAO): ConsumedWaterRepository {
         return ConsumedWaterRepository(dao)
     }

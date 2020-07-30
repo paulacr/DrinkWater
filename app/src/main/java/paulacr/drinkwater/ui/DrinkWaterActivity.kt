@@ -3,6 +3,7 @@ package paulacr.drinkwater.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,7 +12,6 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import paulacr.drinkwater.ConsumedWaterViewModel
 import paulacr.drinkwater.R
 import paulacr.drinkwater.databinding.ActivityDrinkWaterBinding
@@ -20,7 +20,7 @@ import paulacr.drinkwater.notification.LocalNotificationManager
 @AndroidEntryPoint
 class DrinkWaterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    @Inject lateinit var viewModel: ConsumedWaterViewModel
+    val viewModel: ConsumedWaterViewModel by viewModels()
 
     private lateinit var binding: ActivityDrinkWaterBinding
 
