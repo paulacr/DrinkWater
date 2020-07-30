@@ -1,5 +1,5 @@
 package paulacr.drinkwater
 
 fun String.getFormattedNumber() =
-    this.replace(" ml","")
+    this.replace(" ml", "")
         .replace(".", "")

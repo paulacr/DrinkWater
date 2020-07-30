@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "591715792673",
+    "firebase_url": "https://drinkwater-9a09e.firebaseio.com",
+    "project_id": "drinkwater-9a09e",
+    "storage_bucket": "drinkwater-9a09e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591715792673:android:38545ef4bb3ae209787060",
+        "android_client_info": {
+          "package_name": "paulacr.drinkwater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591715792673-16p196g93bem4t0e6m7qp17eegtaeuhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbU9N6zI_thi18egf_0SGATnvSisY6f4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591715792673-16p196g93bem4t0e6m7qp17eegtaeuhr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

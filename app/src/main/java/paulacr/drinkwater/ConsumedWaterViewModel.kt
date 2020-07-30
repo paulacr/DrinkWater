@@ -1,38 +1,35 @@
 package paulacr.drinkwater
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.*
+import androidx.hilt.lifecycle.ViewModelInject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import paulacr.drinkwater.notification.NotificationDispatcher
+import paulacr.drinkwater.repository.ConsumedWaterDataSource
 import paulacr.drinkwater.ui.ViewState
-import paulacr.drinkwater.repository.ConsumedWaterRepository
-import kotlin.coroutines.CoroutineContext
 
-class ConsumedWaterViewModel(private val repository: ConsumedWaterRepository) : ViewModel(), CoroutineScope {
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + viewModelJob
-
-    private val viewModelJob = Job()
-
-    private val consumedWaterLiveData = MutableLiveData<ViewState>()
+class ConsumedWaterViewModel @ViewModelInject constructor(
+    val repository: ConsumedWaterDataSource,
+    val notificationDispatcher: NotificationDispatcher
+) : BaseViewModel(), CoroutineScope {
 
     var consumedWater: String? = null
 
     fun onSaveConsumedWater() {
-        consumedWaterLiveData.postValue(ViewState.SAVING)
+        postValue(ViewState.SAVING)
 
-            launch {
+        launch {
             consumedWater?.let {
                 repository.saveConsumedWater(it.getFormattedNumber().toDouble())
-                consumedWaterLiveData.postValue(ViewState.FINISHED)
+                postValue(ViewState.FINISHED)
             }
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
+    fun getWork() = notificationDispatcher.createWork()
 
-    fun getConsumedWaterLiveData() = consumedWaterLiveData
+    fun getConsumedWaterLiveData() = viewStateLiveData
+
+    fun scheduleNotification() {
+//        notificationDispatcher.startWork()
+    }
 }

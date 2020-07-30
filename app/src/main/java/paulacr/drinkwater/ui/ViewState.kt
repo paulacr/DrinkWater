@@ -4,5 +4,6 @@ enum class ViewState {
 
     SAVING,
     LOADING,
-    FINISHED
+    FINISHED,
+    IDLE
 }

@@ -1,25 +1,28 @@
 package paulacr.drinkwater
 
 import android.app.Application
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import com.facebook.stetho.Stetho
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
-import paulacr.drinkwater.di.consumedWaterModule
-import paulacr.drinkwater.di.dbModule
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Inject
 
-class DrinkWaterApplication : Application() {
+@HiltAndroidApp
+class DrinkWaterApplication : Application(), Configuration.Provider {
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+
+    private lateinit var appComponent: ApplicationComponent
+
+    override fun getWorkManagerConfiguration() =
+        Configuration.Builder()
+            .setWorkerFactory(workerFactory)
+            .build()
 
     override fun onCreate() {
         super.onCreate()
         Stetho.initializeWithDefaults(this)
-        startKoin {
-            androidContext(this@DrinkWaterApplication)
-            modules(
-                listOf(
-                    dbModule,
-                    consumedWaterModule
-                )
-            )
-        }
     }
 }
